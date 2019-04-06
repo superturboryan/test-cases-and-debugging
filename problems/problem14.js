@@ -22,7 +22,7 @@ Lorem ipsumos dolor sit amet consectetur
 even though there is a space before the a in adipisicing
 */
 
-// we need 5 test cases.
+// we need 5 test cases. I only did two...
 let inputs = [
   "Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam",
   "Meow for food, then when human fills food dish, take a few bites of food and continue meowing run outside as soon as door open and lick yarn hanging out of own butt."

@@ -43,4 +43,4 @@ runTest(4);
 
 console.log("All tests passed for " + __filename);
 
-//Checked!
+//Checked and passed!
