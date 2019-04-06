@@ -22,19 +22,25 @@ Lorem ipsumos dolor sit amet consectetur
 even though there is a space before the a in adipisicing
 */
 
-// we need 5 test cases. I only did two...
+// We need 5 test cases. I only did three...
 let inputs = [
   "Lorem ipsumos dolor sit amet consectetur adipisicing elit. Magni quisquam",
-  "Meow for food, then when human fills food dish, take a few bites of food and continue meowing run outside as soon as door open and lick yarn hanging out of own butt."
+  "Meow for food, then when human fills food dish, take a few bites of food and continue meowing run outside as soon as door open and lick yarn hanging out of own butt.",
+  ""
 ];
 
 let outputs = [
   "Lorem ipsumos dolor sit amet consectetur\nadipisicing elit. Magni quisquam",
-  "Meow for food, then when human fills foo\nd dish, take a few bites of food and con\ntinue meowing run outside as soon as doo\nr open and lick yarn hanging out of own \nbutt."
+  "Meow for food, then when human fills foo\nd dish, take a few bites of food and con\ntinue meowing run outside as soon as doo\nr open and lick yarn hanging out of own \nbutt.",
+  ""
 ];
 
 function f(str) {
+  //If string is empty simply return it
+  if (!str.length) return str;
+
   //RegEx that splits string into array of strings 40 char long with remainder at the end
+  //                      {(add remainder),(length of strings)}
   let lines = str.match(/.{1,40}/g);
 
   //Empty array to add modified lines to
@@ -49,11 +55,11 @@ function f(str) {
       //Shift the element out of the first position if so
       chars.shift();
     }
-    //Push a new line \n to the end of the char array of each line EXCEPT for the final line
+    //Push a new line \n to the end of the char array of each line EXCEPT for the final line.
+    //All lines beside the final will be at least 39 in length (after removing initial space from some of them)
     if (chars.length >= 39) {
       chars.push("\n");
     }
-
     //The modified line to add will be the characters joined together
     let modLine = chars.join("");
 
@@ -61,9 +67,7 @@ function f(str) {
     modLines.push(modLine);
   }
   //Join the array of modified lines into a string and return
-  let output = modLines.join("");
-
-  return output;
+  return modLines.join("");
 }
 
 function runTest(i) {
@@ -75,7 +79,7 @@ function runTest(i) {
 
 runTest(0);
 runTest(1);
-// runTest(2);
+runTest(2);
 // runTest(3);
 // runTest(4);
 
